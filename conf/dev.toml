@@ -1,0 +1,65 @@
+# This is a TOML document.
+# export SAAS_COMMON_CONFIG="dev"
+
+### 服务模式设置
+#dev | test | beta | prod，应用运行模式
+AppMode = "dev"
+
+
+### MDBG设置
+[Mdbg]
+# mdbg监听地址
+Host = "127.0.0.1"
+
+# mdbg监听端口
+Port = 11234
+
+# 1:开启  0：关闭
+Enable = 1
+
+# Proxy相关配置
+[Proxy]
+# Proxy本机IP (transmit_server/proxy_agent/proxy_server)
+Host = "10.107.88.5"
+
+# Proxy监听端口
+Port = 8080
+
+# https连接自签公钥证书
+ServerCrt = "/saasdata/httpsproxy/grpc/ssl/server.crt"
+ServerKey = "/saasdata/httpsproxy/grpc/ssl/server.key"
+
+# Proxy server 的下一级Host配置 (transmit_server/proxy_agent)
+PHost = "10.107.88.6"
+
+# Proxy server 的port配置
+PPort = 8080
+
+# 目标的host配置 (transmit_server)
+THost = "10.107.66.86"
+
+# 目标的port配置
+TPort = 8081
+
+# Type 代理类型 {"transmit_server", "proxy_agent", "proxy_server"}
+# 1、transmit_server -> proxy_server
+# 2、transmit_server -> proxy_agent -> proxy_server
+Type = "transmit_server"
+
+
+### 日志相关配置
+[Log]
+# 服务日志路径设置
+Path = "/var/logs/sa/httpsproxy/httpsproxy.log"
+
+# 日志级别 [1:TRACE 跟踪,2:DEBUG 调试,3:INFO 信息,4:WARN 警告,5:ERROR 一般错误,6:FATAL 致命错误]
+Level = 2
+
+# 日志分割大小，单位：MB
+MaxSize = 500
+
+# 备份个数
+MaxBackups = 30
+
+# 保存时间，单位：天
+MaxAge = 30
